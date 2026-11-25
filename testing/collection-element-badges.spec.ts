@@ -8,7 +8,7 @@ const openFixture = createBrowserFixture(
 )
 
 for (const direction of ['ltr', 'rtl']) {
-  test(`KI-049 criterion badges preserve native heights and wrap (${direction})`, async ({
+  test(`Criterion badges preserve native heights and wrap (${direction})`, async ({
     page,
   }, info) => {
     await page.setViewportSize({ width: 680, height: 800 })

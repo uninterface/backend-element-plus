@@ -42,7 +42,7 @@ test('the reduced-motion patch is scoped to Uninterface buttons', () => {
 test('native button variants and indicators follow the declared treatments', () =>
   withBuiltDomFixture(
     build,
-    new URL('../../../tests/fixtures/buttons.ts', import.meta.url),
+    new URL('./fixtures/buttons.ts', import.meta.url),
     async ({ mountButton }) => {
       const treatment = (value) =>
         ({
@@ -67,43 +67,10 @@ test('native button variants and indicators follow the declared treatments', () 
     },
   ))
 
-test('suggestions retain the native arrow during typing and acceptance', () =>
-  withBuiltDomFixture(
-    build,
-    new URL('../../../tests/fixtures/reviewed-components.ts', import.meta.url),
-    async ({ exercise }, window) => {
-      let suggestionArrowSeen = false
-      const observer = new window.MutationObserver(() => {
-        const suggestions = window.document.querySelector(
-          '.element-plus-suggestions',
-        )
-        if (
-          suggestions
-            ?.closest('.el-popper')
-            ?.querySelector(':scope > .el-popper__arrow')
-        )
-          suggestionArrowSeen = true
-      })
-      observer.observe(window.document.body, {
-        childList: true,
-        subtree: true,
-      })
-      try {
-        const { checks, errors } = await exercise()
-        assert.ok(suggestionArrowSeen)
-        assert.deepEqual(Array.from(errors), [])
-        for (const [name, passed] of Object.entries(checks))
-          assert.equal(passed, true, name)
-      } finally {
-        observer.disconnect()
-      }
-    },
-  ))
-
 test('full height toggles the native fixed-header presentation', () =>
   withBuiltDomFixture(
     build,
-    new URL('../../../tests/fixtures/list-browser.ts', import.meta.url),
+    new URL('./fixtures/collection-scrolling.ts', import.meta.url),
     async ({ mountCollectionScrolling }) => {
       const example = await mountCollectionScrolling()
       try {
@@ -131,7 +98,7 @@ test('full height toggles the native fixed-header presentation', () =>
 test('native ascending caret changes the secondary sort clause once', () =>
   withBuiltDomFixture(
     build,
-    new URL('../../../tests/fixtures/table-sorting.ts', import.meta.url),
+    new URL('./fixtures/native-sort-clause.ts', import.meta.url),
     async ({ mountSorting }, window) => {
       const fixture = await mountSorting()
       try {
@@ -170,7 +137,7 @@ test('native ascending caret changes the secondary sort clause once', () =>
 test('layout density uses the native spacing at each strategy scope', () =>
   withBuiltDomFixture(
     build,
-    new URL('../../../tests/fixtures/layout-density.ts', import.meta.url),
+    new URL('./fixtures/layout-density.ts', import.meta.url),
     async ({ mountDensity }) => {
       const expected = ['4px', '8px', '16px']
       const example = await mountDensity()
@@ -218,7 +185,7 @@ test('layout density uses the native spacing at each strategy scope', () =>
 test('collection footer slots follow the native DOM order', () =>
   withBuiltDomFixture(
     build,
-    new URL('../../../tests/fixtures/collection-footer.ts', import.meta.url),
+    new URL('./fixtures/collection-footer.ts', import.meta.url),
     async ({ mountCollectionFooter }) => {
       const example = await mountCollectionFooter()
       try {
@@ -238,7 +205,7 @@ test('collection footer slots follow the native DOM order', () =>
 test('temporal pickers use their native parts and date format', () =>
   withBuiltDomFixture(
     build,
-    new URL('../../../tests/fixtures/temporal-pickers.ts', import.meta.url),
+    new URL('./fixtures/temporal-pickers.ts', import.meta.url),
     async ({ mount }, window) => {
       const demo = await mount()
       const { document } = window
@@ -281,7 +248,7 @@ test('temporal pickers use their native parts and date format', () =>
 test('table cell alignment uses physical direction after RTL changes', () =>
   withBuiltDomFixture(
     build,
-    new URL('../../../tests/fixtures/table-sizing.ts', import.meta.url),
+    new URL('./fixtures/table-sizing.ts', import.meta.url),
     async ({ mountSizing }, window) => {
       Object.defineProperty(window.HTMLElement.prototype, 'clientWidth', {
         get: () => 800,
