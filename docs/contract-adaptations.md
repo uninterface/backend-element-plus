@@ -19,7 +19,7 @@ Ordinary beside form-label arrangements and separated checkable label/control ar
 
 UiTable uses ElTable auto rendering with one header/body table. ElTableColumn receives resolved numeric widths and align/header-align; fixed CSS table-layout and explicit width implement allocation. Native resizing/filtering are disabled in favor of shared ownership. Wrapper rows prevent business children from enabling a tree. Custom-sort headers/carets project shared multi-sort; only changed clauses are submitted. Priority text participates in column measurement and does not duplicate accessible priority descriptions.
 
-Native positional cell keys can recreate editors during column reorder; sizing/alignment preserve them. Native columns register in onMounted, so native table SSR/hydration is not yet accepted; core declaration SSR does not establish this support. These limitations remain unresolved by this documentation migration.
+Native positional cell keys can recreate editors during column reorder; sizing/alignment preserve them. See the [known table server-rendering limitation](collections.md#server-rendering-and-hydration).
 
 The bounded native table viewport owns scrolling and is passed to useUiCollectionView; its allocation host supplies size. ElTable height and auto-layout sticky headers retain header visibility. Business footer content stays outside the native viewport; append recovery uses the native append area. Arbitrary column-filter editors use native popovers/icons because the native filter dropdown accepts option lists, not range forms. Removable criteria use ElTag's native close button with criterion-specific names and disabled state.
 

@@ -2,7 +2,7 @@
 
 UiList, UiTable and UiPaginator implement `list.view.v1`, `table.view.v1` and `paginator.view.v1`. UiTableColumn is a logical core declaration. The application owns the shared list session and explicitly loads/disposes it. Views never load on mounting or reprocess accepted source rows.
 
-ElTable auto layout keeps header and body in one table. ElTableColumn uses native custom-sort headers synchronized with the shared query; native filterMethod remains unused. Wrapped rows prevent business children from activating tree processing. ElCheckbox, ElButton, ElInputNumber and ElSelect supply native controls. Native column registration runs on mount: server-rendered native table content remains an open acceptance item.
+ElTable auto layout keeps header and body in one table. ElTableColumn uses native custom-sort headers synchronized with the shared query; native filterMethod remains unused. Wrapped rows prevent business children from activating tree processing. ElCheckbox, ElButton, ElInputNumber and ElSelect supply native controls. See [Server rendering and hydration](#server-rendering-and-hydration) for the known table limitation.
 
 Core supplies localized status, ordered query updates, shared announcement/automatic continuation coordination and guarded requests. The adapter owns actual semantic/scroll/focus targets. Count and minimum-width grids use adapter-owned spacing; height full consumes a bounded parent. Selection has dedicated controls and nested actions do not activate rows. Cursor navigation never fabricates totals or page numbers.
 
@@ -202,9 +202,9 @@ Card summaries place the collection-wide title above aligned field-name/value pa
 
 ## Server rendering and hydration
 
-Native ElTableColumn registration occurs on mount. The server table omits the declared headers, record cells, draft editors and summary values; its table name is also supplied after mounting. Mounting later creates the content. Height configuration supports consistent initial wrapper styles for content and full height, but a working table after mounting does not establish preservation of server-rendered table content or editor nodes.
+**Known issue.** With the Element Plus backend, `UiTable` and `UiCollectionView` in table mode omit column headers, record cells and editors, summary values, and the table’s accessible name from the initial server HTML. The browser creates this content after mounting. The server-rendering gap remains open and needs a future fix.
 
-Until corrected, use browser-mounted collection presentation when this backend is hosted in an SSR application. A client-only boundary should render the same placeholder on the server and during initial hydration, then mount the collection; keep the business control outside that view boundary. This intentionally omits table records from the initial HTML and requires JavaScript. There is no automatic read-only server-table substitute or automatic fallback in this adapter. Basic sorting, selection and nested actions work after the tested mount, but do not resolve these SSR limitations.
+If your SSR application can defer table content until JavaScript runs, use a client-only boundary. Render the same placeholder on the server and during initial hydration, then mount the table view in the browser. Keep the business control outside the view boundary. Your application supplies the placeholder.
 
 ## Editable collection focus
 

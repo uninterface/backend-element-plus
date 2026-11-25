@@ -136,6 +136,8 @@ Integration supplies a fresh native ID/z-index context per application. Native I
 
 Render Vue's teleport output into its target hosts before hydration. Native tooltip hosts use `#el-popper-container-<idPrefix>`; emit the matching container, including empty anchors. The verified baseline covers text/multiline fields, checkbox, form submit/reset, icons and locale/mode. Open overlays and general selection SSR remain outside that baseline. Backend checkbox label coordination settles after mount without replacing the editor.
 
+For `UiTable` and table-mode `UiCollectionView`, see the [known server-rendering limitation](collections.md#server-rendering-and-hydration).
+
 ## Typography: fonts first, backend styles second
 
 | Choice | First import: fonts |
