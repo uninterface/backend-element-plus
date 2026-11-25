@@ -117,9 +117,9 @@ UiDrawer (modal and retained panel modes) and UiPopover consume this backend's n
 
 UiPopover retains Element Plus’s default visible arrow using `.el-popper__arrow` directly inside the native popper surface, with resolved `data-popper-placement`. Existing light/dark border/background tokens apply. The adapter positions the arrow toward the anchor after flips and viewport clamping, outside the scrolling body; no application arrow markup or business prop is required.
 
-## Remaining popup-arrow limits
+## Calendar, suggestion and submenu arrows
 
-The general UiPopover now retains its native arrow. Scalar/range calendar popups and UiSuggestions still explicitly suppress arrows even though their native Popover/Autocomplete counterparts supply them by default; these are remaining presentation gaps. Ordinary UiTooltip and select/multiselect use native defaults. Command-menu popup presentation follows native ElSubMenu, which intentionally omits its pointer. See the core native-arrow presentation principle; do not repair these gaps with business-side CSS.
+Calendar popups and suggestions use the [native Popover arrow](presentation.md#native-arrows-in-composed-pickers-and-suggestions). Tooltips and single- and multiple-selection popups use native defaults. Command-menu popups follow the arrowless native ElSubMenu presentation.
 
 
 ### Navbar row sizing

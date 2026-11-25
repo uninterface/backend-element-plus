@@ -137,13 +137,13 @@ Resizable column handles remain keyboard-operable separators at the visual inlin
 Element Plus appends its native caret button after the custom header slot. The adapter therefore uses a Vue-managed Teleport to place the resize separator at the end of the actual header cell after mount. The native filter/caret order is preserved (filter, native sort caret, resize for a filtered sortable column). Target registration updates only when native header elements change; conditional controls and remounting retain native event isolation. The initial render keeps the handle in the slot until its DOM target exists; existing native table SSR limitations still apply. Review this integration when upgrading the native table.
 
 
-## Collection review follow-up
+## Sort priority, header layout and badge editors
 
-Active multi-sort table headers provide a Sort priority menu (Move earlier/later), isolated from native sort-cycle activation. Header sizing enables the shared minimumHeader measurement so label, direction, index, priority menu and other native header controls establish a usable minimum alongside the author's minimum. Header measurements include native cell insets; row/cell content sizing keeps its existing policy. Narrow Table no longer shows the demo's redundant external Sort panel.
+Active multi-sort table headers provide a Sort priority menu (Move earlier/later), isolated from native sort-cycle activation. Header sizing enables the shared minimumHeader measurement so label, direction, index, priority menu and other native header controls establish a usable minimum alongside the author's minimum. Header measurements include native cell insets; row/cell content sizing keeps its existing policy.
 
 The long-row header uses measured filter/sort/action group asks to place actions beside filters, beside sorting, or below. Actions stay top-aligned. CollectionHeaderPart supplies a zero-height line boundary for the middle placement, using the backend gap without adding an extra empty row. Native editor alignment excludes actions and popup surfaces. Keyed moves retain controls, draft and focus.
 
-The badge editor uses UiPopover's explicit anchor binding on its active badge; positioning transfers from Add to badge and returns to Add if the badge disappears, preserving the original trigger's cancellation/focus role. Table-column editors now request first-enabled-input/choice focus after native opening. Browser/manual acceptance remains separately recorded in the workspace ledger.
+The badge editor uses UiPopover's explicit anchor binding on its active badge; positioning transfers from Add to badge and returns to Add if the badge disappears, preserving the original trigger's cancellation/focus role. When a table-column editor opens, it requests focus on its first enabled input or choice. In a browser, check focus after opening and closing the editor, badge anchor changes, and header layout at narrow widths. Verify that controls and draft values survive layout changes.
 
 ### Criterion badge height
 
