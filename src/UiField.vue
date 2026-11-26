@@ -23,6 +23,7 @@
   const props = defineProps<{ binding: UiFieldViewBinding }>()
   const nativeForm = useFieldFormContext(() => policy.value.showFailure)
   const policy = useUiFieldStrategies(() => props.binding, {
+    ...{ feedbackRoot: element },
     help: 'together',
     defaultLabels: () =>
       nativeForm?.labelPosition === 'left'
@@ -40,6 +41,11 @@
       nativeForm?.showMessage === false ? 'none' : 'show-below',
     labels: ['above', 'beside'],
   })
+  const deferFeedback = computed(
+    () =>
+      'inlineFeedbackDeferred' in policy.value &&
+      policy.value.inlineFeedbackDeferred === true,
+  )
   const inlineMessage = computed(() => Boolean(nativeForm?.inlineMessage))
   const controlSize = useControlSize('UiField')
   const checkboxes = ref(0)
@@ -200,6 +206,7 @@
         :id="`${binding.id}-issue`"
         :message="error"
         :inline="inlineMessage ?? false"
+        :deferred="deferFeedback"
       />
     </template>
   </ElFormItem>

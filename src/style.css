@@ -420,6 +420,9 @@
   flex-basis: 100%;
   margin-left: 0;
 }
+.element-field-error.element-visually-hidden {
+  position: absolute;
+}
 .element-help {
   display: block;
   color: var(--el-text-color-secondary);
