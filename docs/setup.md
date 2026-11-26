@@ -12,7 +12,7 @@ The release package ships compiled ES modules and TypeScript declarations.
 Install `@uninterface/backend-element-plus` under the alias `@uninterface/backend`.
 
 ```sh
-npm install @uninterface/uninterface @uninterface/backend@npm:@uninterface/backend-element-plus@2.14.0-alpha1
+npm install @uninterface/uninterface@^0.1.0 @uninterface/backend@npm:@uninterface/backend-element-plus@2.14.0
 ```
 
 Choose a Core version that satisfies the selected backend release's peer dependency.
