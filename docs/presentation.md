@@ -103,7 +103,7 @@ Root popup transition completion initializes focus only when focus is not alread
 
 ## Verification and limits
 
-Use the shared semantic acceptance scenarios and the native comparison fixture in [docs/examples/NativeReference.vue](examples/NativeReference.vue). Real-browser checks are required for popup typography, keyboard/focus, narrow-screen navigation, scrolling, overlay bounds, contrast and motion. Builds and DOM simulation do not establish visual conformance or accessibility certification.
+Use the native comparison fixture in [docs/examples/NativeReference.vue](examples/NativeReference.vue) alongside an application scenario that exercises the relevant shared contract. In a browser, verify popup typography, keyboard interaction, focus, narrow navigation, scrolling, overlay bounds, contrast and motion. See [native test setup](testing.md#run-the-backends-native-tests) for the source-checkout runner.
 
 ### Known light-mode editor contrast limitation
 
