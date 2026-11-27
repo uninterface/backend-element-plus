@@ -67,6 +67,13 @@ Keyboard-focused submenu triggers use the dropdown highlight on their visible ti
 
 The horizontal menu uses click opening and disables native ellipsis: Element's ellipsis calculation partitions immediate slot VNodes, which does not preserve this recursively composed entry tree. Horizontal item sizing remains native. Narrow-screen overflow and keyboard access require browser verification; the adapter does not silently substitute a different navigation pattern.
 
+### Layout separators
+
+`UiLayout.vue` supplies `layout.separator.v1` for `UiSeparator`. It paints a
+solid 1px line in the existing peer gap using Element Plus's
+`--el-border-color`. A short vertical line appears between horizontal peers
+on the same row. A horizontal line spans the layout between vertical peers.
+
 ## Field spacing in layouts
 
 UiField retains ElFormItem for native label, size and validation presentation. When an `.element-field` is the sole direct element child of an `.element-layout-item` directly owned by UiLayout, its native bottom margin is removed: UiLayout supplies peer separation. Direct UiForm fields retain their existing margin-to-form-gap integration. Fields inside other compositions and independently authored ElFormItems are not targeted by the layout rule.
