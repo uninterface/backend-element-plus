@@ -4,6 +4,12 @@ ElMenu/ElSubMenu/ElMenuItem. The existing private menu-context bridge supplies c
 
 All four UiNavMenu presentations are implemented: horizontal, vertical-tree, vertical-popup, and icon-popup. The shared controller owns current/path/requests, while each view owns expansion. Current changes reveal persistent ancestry without opening closed flyouts. Native markup, focus mechanics and styling remain backend-owned. Group and descendant slots preserve leading icons; check selection and shortcut hints are absent from navigation projections.
 
+With `width` omitted, the `horizontal` root fills the parent's offered width.
+The `vertical-tree`, `vertical-popup`, and `icon-popup` roots size to their
+content up to that width.
+Use `width="full"` or `width="content"` to select the root width explicitly
+(`navigation.menu.width.v1`). Floating submenus size independently.
+
 Overflowing dropdowns and flyouts scroll inside their native outer popup surface, bounded to the viewport. Each floating level has its own scrollport and contains wheel/touch scroll chaining at its boundaries; nested flyouts remain teleported and can extend beside the parent without being clipped by its scrollport. Native positioning, content height for short menus, keyboard focus and destination activation remain in use. Persistent trees retain content flow inside their containing layout or drawer scrollport. Consumers do not supply popup heights, backend CSS or scroll event handlers.
 
 Navigation and command flyouts register their actual native popper wrappers with Uninterface. Root branches, groups and persistent tree branches forward the enclosing popup scope. The guarded Vite integration for Element Plus 2.14.7 passes the owning surface through ElSubMenu to its native tooltip's `appendTo` prop. This keeps submenu poppers inside the owning dialog or popover while allowing them to extend beyond the parent menu's own scrollport. Review that bridge when upgrading Element Plus.

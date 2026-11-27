@@ -1480,6 +1480,12 @@ body,
 .element-plus-navigation-surface[data-navigation-mode='horizontal'] {
   inline-size: 100%;
 }
+.element-plus-navigation-surface[data-navigation-width='content'] {
+  inline-size: max-content;
+}
+.element-plus-navigation-surface[data-navigation-width='full'] {
+  inline-size: 100%;
+}
 .element-plus-navigation-surface[data-navigation-boundary='inline-end'] {
   border-inline-end: 1px solid var(--el-border-color);
 }
@@ -1520,6 +1526,14 @@ body,
 /* The outer navigation surface owns the logical boundary, including RTL. */
 .element-plus-navigation-surface > .element-navigation-menu {
   border: 0;
+}
+/* ElMenu resets only padding-left. Reset the list inset on either inline edge. */
+.element-plus-navigation-surface:is(
+    [data-navigation-mode='vertical-tree'],
+    [data-navigation-mode='vertical-popup']
+  )
+  > .element-navigation-menu {
+  padding-inline: 0;
 }
 .element-navbar-links > .element-plus-navigation-surface {
   display: flex;
