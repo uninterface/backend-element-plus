@@ -67,6 +67,16 @@ Keyboard-focused submenu triggers use the dropdown highlight on their visible ti
 
 The horizontal menu uses click opening and disables native ellipsis: Element's ellipsis calculation partitions immediate slot VNodes, which does not preserve this recursively composed entry tree. Horizontal item sizing remains native. Narrow-screen overflow and keyboard access require browser verification; the adapter does not silently substitute a different navigation pattern.
 
+### Avatars
+
+`UiAvatar` supplies `avatar.v1`. An explicit `px` or `em` size sets both
+dimensions. Otherwise the avatar follows the scoped control-size strategy.
+The adapter uses `ElAvatar` for the surface, shape and fallback colors. Its
+neutral diameter is 3.25 times the native fallback font size (45.5px with 14px
+text). The small and large steps subtract or add 16px, with extreme requests
+using the same adjacent step. The adapter supplies the image in the native
+content slot so the loading fallback can stay visible.
+
 ### Layout separators
 
 `UiLayout.vue` supplies `layout.separator.v1` for `UiSeparator`. It paints a
